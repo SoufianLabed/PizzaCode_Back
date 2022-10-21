@@ -11,6 +11,7 @@ import com.example.PizzaCode.repository.RoleRepository;
 import com.example.PizzaCode.repository.UserRepository;
 import com.example.PizzaCode.security.jwt.JwtUtils;
 import com.example.PizzaCode.security.services.UserDetailsImpl;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,6 +28,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
+@Slf4j
 public class UserService {
     @Autowired
     AuthenticationManager authenticationManager;
@@ -40,7 +42,8 @@ public class UserService {
     PasswordEncoder encoder;
 
     public JwtResponse authenticateUser(LoginRequest loginRequest) {
-
+        log.info(String.valueOf(loginRequest.getPassword()));
+        log.info(String.valueOf(loginRequest.getUsername()));
         Authentication authentication = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
