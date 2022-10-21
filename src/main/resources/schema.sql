@@ -5,6 +5,7 @@ DROP TABLE IF EXISTS pizza CASCADE ;
 DROP TABLE IF EXISTS price CASCADE;
 DROP TABLE IF EXISTS pizzeria CASCADE;
 DROP TABLE IF EXISTS format CASCADE;
+DROP TABLE IF EXISTS booking CASCADE;
 
 DROP SEQUENCE IF EXISTS roles_id_seq ;
 DROP SEQUENCE IF EXISTS users_id_seq ;
@@ -12,6 +13,7 @@ DROP SEQUENCE IF EXISTS pizza_id_seq ;
 DROP SEQUENCE IF EXISTS price_id_seq ;
 DROP SEQUENCE IF EXISTS pizzeria_id_seq ;
 DROP SEQUENCE IF EXISTS format_id_seq ;
+DROP SEQUENCE IF EXISTS booking_id_seq ;
 
 CREATE SEQUENCE roles_id_seq;
 CREATE SEQUENCE users_id_seq;
@@ -19,6 +21,7 @@ CREATE SEQUENCE pizza_id_seq;
 CREATE SEQUENCE price_id_seq;
 CREATE SEQUENCE pizzeria_id_seq;
 CREATE SEQUENCE format_id_seq;
+CREATE SEQUENCE booking_id_seq;
 
 
 CREATE TABLE public.users
@@ -99,5 +102,17 @@ CREATE TABLE public.pizzeria
     city character varying(255),
     address character varying(255),
     CONSTRAINT pizzeria_pkey PRIMARY KEY (id)
+);
+
+CREATE TABLE public.booking
+(
+    id integer NOT NULL DEFAULT nextval('booking_id_seq'),
+    firstname character varying(255),
+    lastname character varying(255),
+    date date NOT NULL,
+    hour integer NOT NULL,
+    nbPeople integer NOT NULL,
+    email character varying(255),
+    CONSTRAINT roles_pkey PRIMARY KEY (id)
 );
 
