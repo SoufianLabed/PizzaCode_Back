@@ -6,23 +6,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
-@Table(name = "pizza")
+@Table(name = "contact")
 @Builder
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Pizza {
+public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private String fullname;
+    private String email;
+    private String mobile;
+    private String message;
 
-    private String name;
-
-    private String recipe;
-
-    private String image_name;
-
-    private String price;
 }
+
